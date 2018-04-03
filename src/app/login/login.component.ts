@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Angular2TokenService } from 'angular2-token';
+import {environment} from '../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   title: string;
 
   constructor(private _tokenService: Angular2TokenService) {
-    this._tokenService.init({apiBase: 'https://tours13.herokuapp.com'});
+    this._tokenService.init({apiBase: environment.server_url});
   }
 
   ngOnInit() {
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   private userLogin = {
     email:    "",
     password: ""
-  }
+  };
 
   logIn() {
     console.log('kuku');

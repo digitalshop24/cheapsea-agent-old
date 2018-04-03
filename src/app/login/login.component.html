@@ -10,12 +10,21 @@
         <form class="form" autocomplete="off" id="formLogin" novalidate="">
           <div class="form-group">
             <label for="email">Email</label>
-            <!--<input [(ngModel)]="userLogin.email" email name="email" id="email" class="form-control">-->
-            <input [(ngModel)]="userLogin.email" email name="email" id="email" class="form-control">
+            <input #email_field="ngModel" [(ngModel)]="userLogin.email" email name="email" id="email" class="form-control">
+            <div *ngIf="email_field.invalid && (email_field.dirty || email_field.touched)" class="alert alert-danger">
+              <div *ngIf="email_field.errors.email">
+                Email is incorrect.
+              </div>
+            </div>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input [(ngModel)]="userLogin.password" name="password" id="password" class="form-control">
+            <input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="4" name="password" id="password" class="form-control">
+            <div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">
+              <div *ngIf="password_field.errors.minlength">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
           </div>
           <div>
             <label class="custom-control custom-checkbox">
