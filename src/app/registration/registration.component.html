@@ -10,7 +10,7 @@
         <form class="form" autocomplete="off" id="formLogin" novalidate="">
           <div class="form-group">
             <label for="email">Email</label>
-            <input #email_field="ngModel" [(ngModel)]="userLogin.email" email name="email" id="email" class="form-control">
+            <input #email_field="ngModel" [(ngModel)]="userRegistration.email" email name="email" id="email" class="form-control">
             <div *ngIf="email_field.invalid && (email_field.dirty || email_field.touched)" class="alert alert-danger">
               <div *ngIf="email_field.errors.email">
                 Email is incorrect.
@@ -19,9 +19,18 @@
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="4" type="password" name="password" id="password" class="form-control">
+            <input #password_field="ngModel" [(ngModel)]="userRegistration.password" minlength="4" type="password" name="password" id="password" class="form-control">
             <div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">
               <div *ngIf="password_field.errors.minlength">
+                Name must be at least 4 characters long.
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Confirmation Password</label>
+            <input #password_confirmation_field="ngModel" [(ngModel)]="userRegistration.password_confirmation" type="password" minlength="4" name="password_confirmation" id="password_confirmation" class="form-control">
+            <div *ngIf="password_confirmation_field.invalid && (password_confirmation_field.dirty || password_confirmation_field.touched)" class="alert alert-danger">
+              <div *ngIf="password_confirmation_field.errors.minlength">
                 Name must be at least 4 characters long.
               </div>
             </div>
@@ -29,7 +38,7 @@
           <div *ngIf="error" class="alert alert-danger color-white">
             {{error}}
           </div>
-          <button (click)="logIn()" type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+          <button (click)="signUp()" type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Registration</button>
         </form>
       </div>
       <!--/card-block-->
