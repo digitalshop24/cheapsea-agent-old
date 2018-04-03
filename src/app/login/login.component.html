@@ -1,42 +1,136 @@
-<div class="row">
-  <div class="col-md-6 mx-auto">
+<div class="login-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 d-lg-flex align-items-center">
+        <!--login form-->
+        <div class="login-form">
+          <h4 class="text-uppercase text-purple text-center mb-5">Login</h4>
+          <form class="form" autocomplete="off" id="formLogin" novalidate="">
+            <div class="form-group">
+              <input #email_field="ngModel" [(ngModel)]="userLogin.email" email name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              <div *ngIf="email_field.invalid && (email_field.dirty || email_field.touched)" class="alert alert-danger">
+                <div *ngIf="email_field.errors.email">
+                  Email is incorrect.
+                </div>
+              </div>
 
-    <!-- form card login -->
-    <div class="card rounded-0">
-      <div class="card-header">
-        <h3 class="mb-0">Login</h3>
-      </div>
-      <div class="card-body">
-        <form class="form" autocomplete="off" id="formLogin" novalidate="">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input #email_field="ngModel" [(ngModel)]="userLogin.email" email name="email" id="email" class="form-control">
-            <div *ngIf="email_field.invalid && (email_field.dirty || email_field.touched)" class="alert alert-danger">
-              <div *ngIf="email_field.errors.email">
-                Email is incorrect.
-              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="4" type="password" name="password" id="password" class="form-control">
-            <div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">
-              <div *ngIf="password_field.errors.minlength">
-                Name must be at least 4 characters long.
+          <!--</div>-->
+          <!--<div class="form-group">-->
+            <!--<label for="password">Password</label>-->
+            <!--<input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="4" type="password" name="password" id="password" class="form-control">-->
+            <!--<div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">-->
+              <!--<div *ngIf="password_field.errors.minlength">-->
+                <!--Name must be at least 4 characters long.-->
+            <div class="form-group mb-4">
+              <input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="4" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
+
+              <div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">
+                <div *ngIf="password_field.errors.minlength">
+                  Name must be at least 4 characters long.
+                </div>
               </div>
+
             </div>
+
+            <div class="form-group clearfix">
+              <a href="#" class="float-left forgot-link my-2">Forgot Password ?</a>
+              <button (click)="logIn()" type="submit" class="btn btn-purple float-right">LOGIN</button>
+            </div>
+
+            <div class="form-divider"></div>
+
+            <a href="#" class="btn btn-facebook text-uppercase"><i class="fa fa-facebook-square"></i> Login with facebook</a>
+            <div class="text-center mt-4">
+              <a href="registration.html" class="btn-link text-capitalize f12">Create New Account</a>
+            </div>
+          </form>
+        </div>
+        <!--/login form-->
+
+        <!--login promo-->
+        <div class="login-promo basic-gradient  text-white position-relative">
+          <div class="login-promo-content text-center">
+            <a href="#" class="mb-4 d-block">
+              <img class="pr-3" src="assets/img/logo-icon.png" srcset="assets/img/logo-icon@2x.png 2x" alt="">
+              <span class="text-uppercase weight800 text-white f18">dashlab</span>
+            </a>
+            <h1 class="text-white">Let’s Start The Journey</h1>
+            <p>Enter the most beautiful admin ever</p>
+            <a href="#" class="play-btn mt-4"><i class="fa fa-play"></i></a>
           </div>
-          <div *ngIf="error" class="alert alert-danger color-white">
-            {{error}}
-          </div>
-          <button (click)="logIn()" type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
-        </form>
+          <!--<div *ngIf="error" class="alert alert-danger color-white">-->
+            <!--{{error}}-->
+          <!--</div>-->
+          <!--<button (click)="logIn()" type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>-->
+        <!--</form>-->
+        </div>
+        <!--/login promo-->
+
       </div>
-      <!--/card-block-->
     </div>
-    <!-- /form card login -->
-
   </div>
 
-
+  <!--<script src="assets/vendor/jquery/jquery.min.js"></script>-->
+  <!--<script src="assets/vendor/jquery-ui/jquery-ui.min.js"></script>-->
+  <!--<script src="assets/vendor/popper.min.js"></script>-->
+  <!--<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>-->
+  <!--<script src="assets/vendor/jquery-dropdown-master/jquery.dropdown.js"></script>-->
+  <!--<script src="assets/vendor/m-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>-->
+  <!--<script src="assets/vendor/icheck/skins/icheck.min.js"></script>-->
+<!---->
+  <!--<script src="assets/vendor/modernizr.js"></script>-->
+<!---->
+  <!--<script src="assets/js/scripts.js"></script>-->
 </div>
+
+
+
+
+
+<!--<div class="row">-->
+  <!--<div class="col-md-6 mx-auto">-->
+
+    <!--&lt;!&ndash; form card login &ndash;&gt;-->
+    <!--<div class="card rounded-0">-->
+      <!--<div class="card-header">-->
+        <!--<h3 class="mb-0">Login</h3>-->
+      <!--</div>-->
+      <!--<div class="card-body">-->
+        <!--<form class="form" autocomplete="off" id="formLogin" novalidate="">-->
+          <!--<div class="form-group">-->
+            <!--<label for="email">Email</label>-->
+            <!--<input #email_field="ngModel" [(ngModel)]="userLogin.email" email name="email" id="email" class="form-control">-->
+            <!--<div *ngIf="email_field.invalid && (email_field.dirty || email_field.touched)" class="alert alert-danger">-->
+              <!--<div *ngIf="email_field.errors.email">-->
+                <!--Email is incorrect.-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="form-group">-->
+            <!--<label for="password">Password</label>-->
+            <!--<input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="4" name="password" id="password" class="form-control">-->
+            <!--<div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">-->
+              <!--<div *ngIf="password_field.errors.minlength">-->
+                <!--Name must be at least 4 characters long.-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div>-->
+            <!--<label class="custom-control custom-checkbox">-->
+              <!--<input type="checkbox" class="custom-control-input">-->
+              <!--<span class="custom-control-indicator"></span>-->
+              <!--<span class="custom-control-description small text-dark">Remember me on this computer</span>-->
+            <!--</label>-->
+          <!--</div>-->
+          <!--<button (click)="logIn()" type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>-->
+        <!--</form>-->
+      <!--</div>-->
+      <!--&lt;!&ndash;/card-block&ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash; /form card login &ndash;&gt;-->
+
+  <!--</div>-->
+
+
+<!--</div>-->

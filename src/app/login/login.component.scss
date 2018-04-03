@@ -1,0 +1,119 @@
+.login-bg {
+  background: #2f3c4b;
+}
+.login-bg .container {
+  margin-top: 8%;
+}
+
+.login-form {
+  float: left;
+  width: 35%;
+  padding: 3rem;
+  border-radius: 10px 0 0 10px;
+  background: #fff;
+}
+.login-form a.forgot-link {
+  color: #2f3c4b;
+}
+.login-form a.forgot-link:hover {
+  text-decoration: underline;
+}
+.login-form .form-control {
+  font-size: .8rem;
+  line-height: 2.2;
+}
+
+.login-promo {
+  float: left;
+  width: 65%;
+  min-height: 550px;
+  border-radius: 10px;
+}
+
+.registration-promo {
+  min-height: 600px;
+}
+
+.login-promo-content {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  padding: 5rem;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.play-btn {
+  display: inline-block;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+  color: #7a86ff;
+  border: 5px solid rgba(255, 255, 255, .5);
+  border-radius: 50% !important;
+  background: #fff;
+  line-height: 45px;
+}
+.play-btn i {
+  position: relative;
+  left: 2px;
+  color: #7a86ff;
+  font-size: 16px;
+}
+
+.form-divider {
+  position: relative;
+  clear: both;
+  height: 0;
+  margin: 2.5rem 0;
+  border-top: 1px dashed #e5e8eb;
+}
+.form-divider:before {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  margin-left: -10px;
+  padding: 0 5px;
+  content: "or";
+  color: #949494;
+  background: #fff;
+}
+
+.btn-facebook {
+  position: relative;
+  display: block;
+  color: #fff;
+  background: #4d65cd;
+  font-weight: 500;
+}
+.btn-facebook i {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  padding-right: 20px;
+  border-right: 1px solid rgba(255, 255, 255, .5);
+  font-size: 20px;
+}
+.btn-facebook:hover {
+  color: #fff;
+  background: #445ab6;
+}
+
+@media (max-width: 992px) {
+  .login-form,
+  .login-promo {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+  }
+  .login-form,
+  .login-promo-content {
+    padding: 1.5rem;
+  }
+  .login-promo,
+  .registration-promo {
+    min-height: 400px;
+  }
+}
