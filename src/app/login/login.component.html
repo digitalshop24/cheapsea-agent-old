@@ -15,22 +15,17 @@
               </div>
 
             </div>
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<label for="password">Password</label>-->
-            <!--<input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="4" type="password" name="password" id="password" class="form-control">-->
-            <!--<div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">-->
-              <!--<div *ngIf="password_field.errors.minlength">-->
-                <!--Name must be at least 4 characters long.-->
             <div class="form-group mb-4">
-              <input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="4" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
-
+              <input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="6" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
               <div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">
                 <div *ngIf="password_field.errors.minlength">
-                  Name must be at least 4 characters long.
+                  Name must be at least 6 characters long.
                 </div>
               </div>
+            </div>
 
+            <div *ngIf="error" class="alert alert-danger color-white">
+              {{error}}
             </div>
 
             <div class="form-group clearfix">
@@ -42,7 +37,7 @@
 
             <a href="#" class="btn btn-facebook text-uppercase"><i class="fa fa-facebook-square"></i> Login with facebook</a>
             <div class="text-center mt-4">
-              <a href="registration.html" class="btn-link text-capitalize f12">Create New Account</a>
+              <a routerLink="/registration" routerLinkActive="active">Create New Account</a>
             </div>
           </form>
         </div>
@@ -59,11 +54,6 @@
             <p>Enter the most beautiful admin ever</p>
             <a href="#" class="play-btn mt-4"><i class="fa fa-play"></i></a>
           </div>
-          <!--<div *ngIf="error" class="alert alert-danger color-white">-->
-            <!--{{error}}-->
-          <!--</div>-->
-          <!--<button (click)="logIn()" type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>-->
-        <!--</form>-->
         </div>
         <!--/login promo-->
 
@@ -83,54 +73,3 @@
 <!---->
   <!--<script src="assets/js/scripts.js"></script>-->
 </div>
-
-
-
-
-
-<!--<div class="row">-->
-  <!--<div class="col-md-6 mx-auto">-->
-
-    <!--&lt;!&ndash; form card login &ndash;&gt;-->
-    <!--<div class="card rounded-0">-->
-      <!--<div class="card-header">-->
-        <!--<h3 class="mb-0">Login</h3>-->
-      <!--</div>-->
-      <!--<div class="card-body">-->
-        <!--<form class="form" autocomplete="off" id="formLogin" novalidate="">-->
-          <!--<div class="form-group">-->
-            <!--<label for="email">Email</label>-->
-            <!--<input #email_field="ngModel" [(ngModel)]="userLogin.email" email name="email" id="email" class="form-control">-->
-            <!--<div *ngIf="email_field.invalid && (email_field.dirty || email_field.touched)" class="alert alert-danger">-->
-              <!--<div *ngIf="email_field.errors.email">-->
-                <!--Email is incorrect.-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="form-group">-->
-            <!--<label for="password">Password</label>-->
-            <!--<input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="4" name="password" id="password" class="form-control">-->
-            <!--<div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">-->
-              <!--<div *ngIf="password_field.errors.minlength">-->
-                <!--Name must be at least 4 characters long.-->
-              <!--</div>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div>-->
-            <!--<label class="custom-control custom-checkbox">-->
-              <!--<input type="checkbox" class="custom-control-input">-->
-              <!--<span class="custom-control-indicator"></span>-->
-              <!--<span class="custom-control-description small text-dark">Remember me on this computer</span>-->
-            <!--</label>-->
-          <!--</div>-->
-          <!--<button (click)="logIn()" type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>-->
-        <!--</form>-->
-      <!--</div>-->
-      <!--&lt;!&ndash;/card-block&ndash;&gt;-->
-    <!--</div>-->
-    <!--&lt;!&ndash; /form card login &ndash;&gt;-->
-
-  <!--</div>-->
-
-
-<!--</div>-->
