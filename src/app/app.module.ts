@@ -2,9 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpModule} from '@angular/http';
 
-import { Angular2TokenService } from 'angular2-token';
+import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+
+import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
@@ -19,12 +23,18 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    A2tUiModule,
+    HttpClientModule,
+    HttpModule,
     // A2tUiModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    Angular2TokenService
+    Angular2TokenService,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

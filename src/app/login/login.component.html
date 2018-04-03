@@ -7,16 +7,15 @@
         <h3 class="mb-0">Login</h3>
       </div>
       <div class="card-body">
-        <form class="form" role="form" autocomplete="off" id="formLogin" novalidate="">
+        <form class="form" autocomplete="off" id="formLogin" novalidate="">
           <div class="form-group">
-            <label for="uname1">Username</label>
-            <input type="text" class="form-control form-control-lg rounded-0" name="uname1" id="uname1" required="">
-            <div class="invalid-feedback">Oops, you missed this one.</div>
+            <label for="email">Email</label>
+            <!--<input [(ngModel)]="userLogin.email" email name="email" id="email" class="form-control">-->
+            <input [(ngModel)]="userLogin.email" email name="email" id="email" class="form-control">
           </div>
           <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control form-control-lg rounded-0" id="pwd1" required="" autocomplete="new-password">
-            <div class="invalid-feedback">Enter your password too!</div>
+            <label for="password">Password</label>
+            <input [(ngModel)]="userLogin.password" name="password" id="password" class="form-control">
           </div>
           <div>
             <label class="custom-control custom-checkbox">
@@ -25,7 +24,7 @@
               <span class="custom-control-description small text-dark">Remember me on this computer</span>
             </label>
           </div>
-          <button (click)="logIn(resetVal)" type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
+          <button (click)="logIn()" type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
         </form>
       </div>
       <!--/card-block-->
