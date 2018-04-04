@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Angular2TokenService } from 'angular2-token';
-import { environment } from '../../environments/environment';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-registration',
@@ -9,11 +8,12 @@ import { environment } from '../../environments/environment';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor(private _tokenService: Angular2TokenService) {
-    this._tokenService.init({apiBase: environment.server_url});
+  constructor(
+    private _authService: AuthService) {
   }
 
   ngOnInit() {
+    document.body.classList.add('login-bg');
   }
 
   private userRegistration = {
@@ -24,8 +24,7 @@ export class RegistrationComponent implements OnInit {
   error: null;
 
   signUp() {
-    console.log(this.userRegistration);
-    this._tokenService.registerAccount({
+    this._authService._tokenService.registerAccount({
       email:                this.userRegistration.email,
       password:             this.userRegistration.password,
       passwordConfirmation: this.userRegistration.password_confirmation,

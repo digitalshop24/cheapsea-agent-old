@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Angular2TokenService } from 'angular2-token';
-import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +9,9 @@ import { environment } from '../../environments/environment';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _tokenService: Angular2TokenService) {
-    this._tokenService.init({apiBase: environment.server_url});
+  constructor(
+    private _authService: AuthService,
+    private route: Router) {
   }
 
   ngOnInit() {
@@ -24,17 +25,21 @@ export class LoginComponent implements OnInit {
   error: null;
 
   logIn() {
-    console.log(this.userLogin);
-
-    this._tokenService.signIn({
+    let headerData;
+    this._authService._tokenService.signIn({
       email:    this.userLogin.email,
       password: this.userLogin.password
     }).subscribe(
       res => {
         this.error = null;
+        headerData = res;
       },
       error => {
         this.error = JSON.parse(error._body).errors[0];
+      },
+      () => {
+        this._authService.setHeaders(headerData);
+        this.route.navigate(['/offers']);
       }
     );
   }
