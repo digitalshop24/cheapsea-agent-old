@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  server_url: '//localhost:3000'
-
+  server_url: 'https://tours13.herokuapp.com'
 };

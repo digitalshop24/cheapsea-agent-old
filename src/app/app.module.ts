@@ -49,3 +49,6 @@ const appRoutes: Routes = [
 })
 
 export class AppModule { }
+
+
+// ng build --prod --aot=false --bh ./
