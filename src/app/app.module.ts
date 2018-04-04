@@ -33,7 +33,6 @@ const appRoutes: Routes = [
     HttpClientModule,
     NgbModule.forRoot(),
     HttpModule,
-    // A2tUiModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
