@@ -12,6 +12,11 @@ export class LoginComponent implements OnInit {
   constructor(
     private _authService: AuthService,
     private route: Router) {
+
+    if (this._authService.userSignedIn === true) {
+      this.route.navigate(['/offers']);
+    }
+
   }
 
   ngOnInit() {

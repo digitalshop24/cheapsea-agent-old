@@ -1,0 +1,73 @@
+<form>
+  <label>Тип предложения</label>
+
+  <div class="form-check">
+    <input [(ngModel)]="newOffer.offer_type" class="form-check-input" type="radio" name="offerType" id="airplane-check-box" value="airplane">
+    <label class="form-check-label" for="airplane-check-box">
+      Самолет
+    </label>
+  </div>
+  <div class="form-check">
+    <input [(ngModel)]="newOffer.offer_type" class="form-check-input" type="radio" name="offerType" id="train-check-box" value="train">
+    <label class="form-check-label" for="train-check-box">
+      Поезд
+    </label>
+  </div>
+  <div class="form-check">
+    <input [(ngModel)]="newOffer.offer_type" class="form-check-input" type="radio" name="offerType" id="bus-check-box" value="bus">
+    <label class="form-check-label" for="bus-check-box">
+      Автобус
+    </label>
+  </div>
+  <div class="form-check">
+    <input [(ngModel)]="newOffer.offer_type" class="form-check-input" type="radio" name="offerType" id="rent-car-check-box" value="rent-car">
+    <label class="form-check-label" for="rent-car-check-box">
+      Аренда авто
+    </label>
+  </div>
+
+
+  <!--<div class="container">-->
+    <!--<h1>Google Maps Places Autocomplete Using Angular 2</h1>-->
+    <!--<div class="form-group">-->
+      <!--<input type="text" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <div class="form-group">
+    <label for="offer-name">Название</label>
+    <input [(ngModel)]="newOffer.offer_name" name="offerName" class="form-control" id="offer-name">
+    <small id="offer-name-hint" class="form-text text-muted">Используйте названия которые помогут
+      пользователю быстро понять суть предложений.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="city-from">Город отправления</label>
+    <input type="text" placeholder="Поиск" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search_city_from>
+  </div>
+
+  <div class="form-group">
+    <label for="city-to">Город прибытия</label>
+    <input class="input-with-autocomplete" type="text" placeholder="Поиск" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search_city_to>
+  </div>
+
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="direct-trip">
+      <label class="form-check-label" for="direct-trip">
+        Прямой
+      </label>
+    </div>
+  </div>
+
+  <hr>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

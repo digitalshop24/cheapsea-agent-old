@@ -16,10 +16,12 @@ export class AppComponent {
     this._authService.initAuthPlugin();
 
     if (localStorage.getItem('accessToken')) {
-      this._authService._tokenService.validateToken().subscribe(res => {
-        console.log(res);
+      this._authService._tokenService.validateToken().subscribe((res: any) => {
         this._authService.userSignedIn = true;
-        // this._authService.user = res.data;
+        this._authService.user = JSON.parse(res._body).data;
+
+        console.log(this._authService.user);
+
 
         // let userType: string;
         // !res.data.latitude ? userType = 'user' : userType = 'serviceUser';

@@ -11,14 +11,18 @@ import { FormsModule } from '@angular/forms';
 
 import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 import { AuthService } from './auth/auth.service';
+import { AgmCoreModule } from '@agm/core';
 
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { CheapsComponent } from './cheaps/cheaps.component';
 
+import { CreateOfferComponent } from './create-offer/create-offer.component';
+
 const appRoutes: Routes = [
   // { path: '',             component: AppComponent },
-  { path: 'offers',       component: CheapsComponent },
+  { path: 'create_offer', component: CreateOfferComponent },
+  { path: 'offers',       component: CheapComponent },
   { path: 'login',        component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -29,7 +33,8 @@ const appRoutes: Routes = [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    CheapsComponent
+    CheapsComponent,
+    CreateOfferComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,11 @@ const appRoutes: Routes = [
     HttpClientModule,
     NgbModule.forRoot(),
     HttpModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBEX35MB2wDC4dXdecw6SdFfu-_z-gD5rI',
+      libraries: ['places']
+    }),
   ],
   providers: [
     Angular2TokenService,
@@ -52,3 +61,4 @@ export class AppModule { }
 
 
 // ng build --prod --aot=false --bh ./
+// firebase deploy
