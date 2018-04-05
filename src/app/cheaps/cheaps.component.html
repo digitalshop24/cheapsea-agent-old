@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Cheaps</h1>
+  <div class="row">
+    <div class="card cheap-card" style="width: 18rem;" *ngFor="let cheap of cheaps">
+      <div class="card-body">
+        <h5 class="card-title">Cheap #{{cheap.id}}</h5>
+        <p class="card-text">Name: {{cheap.name}}</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
