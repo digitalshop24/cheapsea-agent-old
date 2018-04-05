@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  server_url: 'https://tours13.herokuapp.com'
+  server_url: 'https://cheapsea.herokuapp.com'
 };
