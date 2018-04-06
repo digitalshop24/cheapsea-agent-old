@@ -22,7 +22,7 @@ import { CreateOfferComponent } from './create-offer/create-offer.component';
 const appRoutes: Routes = [
   // { path: '',             component: AppComponent },
   { path: 'create_offer', component: CreateOfferComponent },
-  { path: 'offers',       component: CheapComponent },
+  { path: 'offers',       component: CheapsComponent },
   { path: 'login',        component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
