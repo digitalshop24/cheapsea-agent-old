@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 import {Router} from '@angular/router';
 import {environment} from '../environments/environment';
+import {CheapsServise} from './cheaps.servise';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  constructor(
-    private _authService: AuthService) {
+  constructor(private _authService: AuthService) { }
 
+  ngOnInit() {
     this._authService.initAuthPlugin();
 
     if (localStorage.getItem('accessToken')) {
