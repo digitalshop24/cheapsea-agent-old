@@ -15,8 +15,9 @@ import { AgmCoreModule } from '@agm/core';
 
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
-import { CheapsComponent } from './cheaps/cheaps.component';
+import { LogoutComponent } from './logout/logout.component';
 
+import { CheapsComponent } from './cheaps/cheaps.component';
 import { CreateOfferComponent } from './create-offer/create-offer.component';
 
 const appRoutes: Routes = [
@@ -25,6 +26,7 @@ const appRoutes: Routes = [
   { path: 'offers',       component: CheapsComponent },
   { path: 'login',        component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
+  { path: 'logout',       component: LogoutComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegistrationComponent,
     CheapsComponent,
-    CreateOfferComponent
+    CreateOfferComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

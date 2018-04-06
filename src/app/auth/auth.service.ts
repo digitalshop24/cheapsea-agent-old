@@ -60,4 +60,12 @@ export class AuthService {
     localStorage.setItem('uid',         authData.uid);
   }
 
+  public removeAuthHeaders() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('client');
+    localStorage.removeItem('expiry');
+    localStorage.removeItem('tokenType');
+    localStorage.removeItem('uid');
+  }
+
 }
