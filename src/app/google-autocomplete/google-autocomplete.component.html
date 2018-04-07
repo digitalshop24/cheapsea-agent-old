@@ -1,0 +1,6 @@
+<!--<div class="form-group">-->
+  <!--<label for="city-from">Город отправления</label>-->
+  <!--<input type="text" placeholder="Поиск" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #google_autocomplete>-->
+<!--</div>-->
+<input [hidden]="true" [value]="autocompleteResult" (change)="onChange($event)" type="text" class="form-control">
+<input type="text" class="form-control google-autocomplete">

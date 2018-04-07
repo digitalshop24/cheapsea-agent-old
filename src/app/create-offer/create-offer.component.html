@@ -1,73 +1,87 @@
-<form>
-  <label>Тип предложения</label>
-
-  <div class="form-check">
-    <input [(ngModel)]="newOffer.offer_type" class="form-check-input" type="radio" name="offerType" id="airplane-check-box" value="airplane">
-    <label class="form-check-label" for="airplane-check-box">
-      Самолет
-    </label>
+<form [formGroup]="newOfferForm" novalidate (ngSubmit)="createOffer(newOfferForm)">
+  <div class="form-group">
+    <label>Тип предложения</label>
+    <div class="form-check">
+      <input formControlName="offer_type" class="form-check-input" type="radio" id="airplane-check-box" value="airplane">
+      <label class="form-check-label" for="airplane-check-box">
+        Самолет
+      </label>
+    </div>
+    <div class="form-check">
+      <input formControlName="offer_type" class="form-check-input" type="radio" id="train-check-box" value="train">
+      <label class="form-check-label" for="train-check-box">
+        Поезд
+      </label>
+    </div>
+    <div class="form-check">
+      <input formControlName="offer_type" class="form-check-input" type="radio" id="bus-check-box" value="bus">
+      <label class="form-check-label" for="bus-check-box">
+        Автобус
+      </label>
+    </div>
+    <div class="form-check">
+      <input formControlName="offer_type" class="form-check-input" type="radio" id="rent-car-check-box" value="rent-car">
+      <label class="form-check-label" for="rent-car-check-box">
+        Аренда авто
+      </label>
+    </div>
   </div>
-  <div class="form-check">
-    <input [(ngModel)]="newOffer.offer_type" class="form-check-input" type="radio" name="offerType" id="train-check-box" value="train">
-    <label class="form-check-label" for="train-check-box">
-      Поезд
-    </label>
-  </div>
-  <div class="form-check">
-    <input [(ngModel)]="newOffer.offer_type" class="form-check-input" type="radio" name="offerType" id="bus-check-box" value="bus">
-    <label class="form-check-label" for="bus-check-box">
-      Автобус
-    </label>
-  </div>
-  <div class="form-check">
-    <input [(ngModel)]="newOffer.offer_type" class="form-check-input" type="radio" name="offerType" id="rent-car-check-box" value="rent-car">
-    <label class="form-check-label" for="rent-car-check-box">
-      Аренда авто
-    </label>
-  </div>
-
-
-  <!--<div class="container">-->
-    <!--<h1>Google Maps Places Autocomplete Using Angular 2</h1>-->
-    <!--<div class="form-group">-->
-      <!--<input type="text" placeholder="Search for Location" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search>-->
-    <!--</div>-->
-  <!--</div>-->
 
   <div class="form-group">
     <label for="offer-name">Название</label>
-    <input [(ngModel)]="newOffer.offer_name" name="offerName" class="form-control" id="offer-name">
+    <input formControlName="offer_name" class="form-control" id="offer-name">
     <small id="offer-name-hint" class="form-text text-muted">Используйте названия которые помогут
       пользователю быстро понять суть предложений.</small>
   </div>
 
   <div class="form-group">
-    <label for="city-from">Город отправления</label>
-    <input type="text" placeholder="Поиск" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search_city_from>
+    <label>Город отправления</label>
+    <app-google-autocomplete formControlName="to_google_place_id"></app-google-autocomplete>
   </div>
 
   <div class="form-group">
-    <label for="city-to">Город прибытия</label>
-    <input class="input-with-autocomplete" type="text" placeholder="Поиск" autocorrect="off" autocapitalize="off" spellcheck="off" class="form-control" #search_city_to>
+    <label>Город прибытия</label>
+    <app-google-autocomplete formControlName="from_google_place_id"></app-google-autocomplete>
   </div>
 
   <div class="form-group">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="direct-trip">
+      <input (change)="addTransfer()" formControlName="direct_trip" name="directTrip" class="form-check-input" type="checkbox" id="direct-trip">
       <label class="form-check-label" for="direct-trip">
         Прямой
       </label>
     </div>
   </div>
 
-  <hr>
+  <div formArrayName="transfers">
+    <div *ngFor="let transfer of newOfferForm.controls.transfers.controls; let i=index" class="card form-group">
+      <div class="card-header">
+        <span>Пересадка {{i + 1}}</span>
+        <span class="float-right" style="cursor: pointer" *ngIf="newOfferForm.controls.transfers.controls.length > 1" (click)="removeTransfer(i)">Удалить</span>
+      </div>
+      <div class="card-body" [formGroupName]="i">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Город пересадки</label>
+            <app-google-autocomplete formControlName="transfer_city"></app-google-autocomplete>
+          </div>
+          <div class="form-group col-md-6">
+           <label>Авиакомпания</label>
+           <input type="text" class="form-control" formControlName="airline">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <button [hidden]="newOfferForm.value.direct_trip" (click)="addTransfer()" type="button" class="btn btn-outline-primary">Добавить еще одну пересадку</button>
   </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+
+  <div class="form-group">
+    <label for="offer-name">Цена</label>
+    <input formControlName="price" class="form-control" id="price">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!newOfferForm.valid">Submit</button>
+
 </form>

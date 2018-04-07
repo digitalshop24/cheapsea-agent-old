@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 import { AuthService } from './auth/auth.service';
@@ -19,6 +19,7 @@ import { LogoutComponent } from './logout/logout.component';
 
 import { CheapsComponent } from './cheaps/cheaps.component';
 import { CreateOfferComponent } from './create-offer/create-offer.component';
+import { GoogleAutocompleteComponent } from './google-autocomplete/google-autocomplete.component';
 
 const appRoutes: Routes = [
   // { path: '',             component: AppComponent },
@@ -37,11 +38,13 @@ const appRoutes: Routes = [
     RegistrationComponent,
     CheapsComponent,
     CreateOfferComponent,
-    LogoutComponent
+    LogoutComponent,
+    GoogleAutocompleteComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     A2tUiModule,
     HttpClientModule,
     NgbModule.forRoot(),
