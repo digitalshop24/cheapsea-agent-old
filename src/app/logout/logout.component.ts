@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+import { Angular2TokenService } from 'angular2-token';
 
 @Component({
   selector: 'app-logout',
@@ -9,17 +9,23 @@ import { AuthService } from '../auth/auth.service';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private _authService: AuthService,
+  constructor(private _tokenService: Angular2TokenService,
               private route: Router) { }
 
-  ngOnInit() {
-    this._authService._tokenService.signOut().subscribe(
+  output: any;
+
+  onSubmit() {
+
+    this.output = null;
+
+    this._tokenService.signOut().subscribe(
       res => {
-        console.log('signOut', res);
-        this._authService.removeAuthHeaders();
+        this.output = res;
         this.route.navigate(['/login']);
-      },
-      error => console.log(error)
+        },
+      error => this.output = error
     );
   }
+
+  ngOnInit() {}
 }

@@ -7,7 +7,7 @@
           <h4 class="text-uppercase text-purple text-center mb-5">Login</h4>
           <form class="form" autocomplete="off" id="formLogin" novalidate="">
             <div class="form-group">
-              <input #email_field="ngModel" [(ngModel)]="userLogin.email" email name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              <input #email_field="ngModel" [(ngModel)]="signInData.email" email name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
               <div *ngIf="email_field.invalid && (email_field.dirty || email_field.touched)" class="alert alert-danger">
                 <div *ngIf="email_field.errors.email">
                   Email is incorrect.
@@ -16,7 +16,7 @@
 
             </div>
             <div class="form-group mb-4">
-              <input #password_field="ngModel" [(ngModel)]="userLogin.password" minlength="6" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
+              <input #password_field="ngModel" [(ngModel)]="signInData.password" minlength="6" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password">
               <div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">
                 <div *ngIf="password_field.errors.minlength">
                   Name must be at least 6 characters long.

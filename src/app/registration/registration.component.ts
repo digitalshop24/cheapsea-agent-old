@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth/auth.service';
+// import { AuthService } from '../auth/auth.service';
+import { Angular2TokenService, RegisterData } from 'angular2-token';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -9,33 +11,53 @@ import { AuthService } from '../auth/auth.service';
 export class RegistrationComponent implements OnInit {
 
   constructor(
-    private _authService: AuthService) {
-  }
+    private _tokenService: Angular2TokenService,
+    private route: Router) {}
+
+  registerData: RegisterData = <RegisterData>{};
+  output: any;
 
   ngOnInit() {
     document.body.classList.add('login-bg');
+    if (this._tokenService.userSignedIn()) {
+      this.route.navigate(['/offers']);
+    }
   }
 
-  private userRegistration = {
-    email:                 '',
-    password:              '',
-    password_confirmation: ''
-  };
-  error: null;
+  // private userRegistration = {
+  //   email:                 '',
+  //   password:              '',
+  //   password_confirmation: ''
+  // };
+  // error: null;
 
   signUp() {
-    this._authService._tokenService.registerAccount({
-      email:                this.userRegistration.email,
-      password:             this.userRegistration.password,
-      passwordConfirmation: this.userRegistration.password_confirmation,
-    }).subscribe(
-      res =>  {
-        this.error = null;
-      },
-      error => {
-        this.error =  JSON.parse(error._body).errors.full_messages[0];
+
+    this.output = null;
+
+    this._tokenService.registerAccount(this.registerData).subscribe(
+      res => {
+        this.registerData  = <RegisterData>{};
+        this.output        = res;
+        this.route.navigate(['/offers']);
+      }, error => {
+        this.registerData  = <RegisterData>{};
+        this.output        = error;
       }
     );
+
+    // this._authService._tokenService.registerAccount({
+    //   email:                this.userRegistration.email,
+    //   password:             this.userRegistration.password,
+    //   passwordConfirmation: this.userRegistration.password_confirmation,
+    // }).subscribe(
+    //   res =>  {
+    //     this.error = null;
+    //   },
+    //   error => {
+    //     this.error =  JSON.parse(error._body).errors.full_messages[0];
+    //   }
+    // );
   }
 
 }

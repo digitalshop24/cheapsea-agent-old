@@ -7,7 +7,7 @@
           <h4 class="text-uppercase text-purple text-center mb-5">Create Account</h4>
           <form>
             <div class="form-group">
-              <input #email_field="ngModel" [(ngModel)]="userRegistration.email" email name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+              <input #email_field="ngModel" [(ngModel)]="registerData.email" email name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
               <div *ngIf="email_field.invalid && (email_field.dirty || email_field.touched)" class="alert alert-danger">
                 <div *ngIf="email_field.errors.email">
                   Email is incorrect.
@@ -15,7 +15,7 @@
               </div>
             </div>
             <div class="form-group mb-4">
-              <input #password_field="ngModel" [(ngModel)]="userRegistration.password" minlength="4" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <input #password_field="ngModel" [(ngModel)]="registerData.password" minlength="4" name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
               <div *ngIf="password_field.invalid && (password_field.dirty || password_field.touched)" class="alert alert-danger">
                 <div *ngIf="password_field.errors.minlength">
                   Name must be at least 4 characters long.
@@ -23,7 +23,7 @@
               </div>
             </div>
             <div class="form-group mb-4">
-              <input #password_confirmation_field="ngModel" [(ngModel)]="userRegistration.password_confirmation" type="password" name="password_confirmation" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password">
+              <input #password_confirmation_field="ngModel" [(ngModel)]="registerData.password_confirmation" type="password" name="password_confirmation" class="form-control" id="exampleInputPassword2" placeholder="Confirm Password">
               <div *ngIf="password_confirmation_field.invalid && (password_confirmation_field.dirty || password_confirmation_field.touched)" class="alert alert-danger">
                 <div *ngIf="password_confirmation_field.errors.minlength">
                   Name must be at least 4 characters long.

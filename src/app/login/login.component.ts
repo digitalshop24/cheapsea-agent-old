@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
+// import { AuthService } from '../auth/auth.service';
+import { Angular2TokenService, SignInData } from 'angular2-token';
+
 
 @Component({
   selector: 'app-login',
@@ -10,17 +12,14 @@ import { AuthService } from '../auth/auth.service';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private _authService: AuthService,
+    // private _authService: AuthService,
+    private _tokenService: Angular2TokenService,
     private route: Router) {
 
-    if (this._authService.userSignedIn === true) {
-      this.route.navigate(['/offers']);
-    }
+    // if (this._authService.userSignedIn === true) {
+    //   this.route.navigate(['/offers']);
+    // }
 
-  }
-
-  ngOnInit() {
-    document.body.classList.add('login-bg');
   }
 
   private userLogin = {
@@ -28,25 +27,48 @@ export class LoginComponent implements OnInit {
     password: ''
   };
   error: null;
+  signInData: SignInData = <SignInData>{};
+  output: any;
+
+  ngOnInit() {
+    document.body.classList.add('login-bg');
+    if (this._tokenService.userSignedIn()) {
+      this.route.navigate(['/offers']);
+    }
+  }
 
   logIn() {
-    let headerData;
-    this._authService._tokenService.signIn({
-      email:    this.userLogin.email,
-      password: this.userLogin.password
-    }).subscribe(
+
+    this.output = null;
+
+    this._tokenService.signIn(this.signInData).subscribe(
       res => {
-        this.error = null;
-        headerData = res;
-      },
-      error => {
-        this.error = JSON.parse(error._body).errors[0];
-      },
-      () => {
-        this._authService.setHeaders(headerData);
+        this.signInData     = <SignInData>{};
+        this.output         = res;
         this.route.navigate(['/offers']);
+      }, error => {
+        this.signInData     = <SignInData>{};
+        this.output         = error;
       }
     );
+
+    // let headerData;
+    // this._authService._tokenService.signIn({
+    //   email:    this.userLogin.email,
+    //   password: this.userLogin.password
+    // }).subscribe(
+    //   res => {
+    //     this.error = null;
+    //     headerData = res;
+    //   },
+    //   error => {
+    //     this.error = JSON.parse(error._body).errors[0];
+    //   },
+    //   () => {
+    //     this._authService.setHeaders(headerData);
+    //     this.route.navigate(['/offers']);
+    //   }
+    // );
   }
 
 }

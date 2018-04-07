@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './auth/auth.service';
 import {Router} from '@angular/router';
 import {environment} from '../environments/environment';
-import {CheapsServise} from './cheaps.servise';
+import {Angular2TokenService, SignInData} from 'angular2-token';
 
 @Component({
   selector: 'app-root',
@@ -11,27 +10,32 @@ import {CheapsServise} from './cheaps.servise';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private _authService: AuthService) { }
+  // constructor(private _authService: AuthService) { }
+  constructor(private tokenService: Angular2TokenService,
+              private route: Router) { }
 
   ngOnInit() {
-    this._authService.initAuthPlugin();
+    this.tokenService.init({apiBase: environment.server_url});
+    this.tokenService.validateToken().subscribe(
+      res => res,
+      error => { this.route.navigate(['/login']); }
+    );
 
-    if (localStorage.getItem('accessToken')) {
-      this._authService._tokenService.validateToken().subscribe((res: any) => {
-        this._authService.userSignedIn = true;
-        this._authService.user = JSON.parse(res._body).data;
-
-        console.log(this._authService.user);
-
-
-        // let userType: string;
-        // !res.data.latitude ? userType = 'user' : userType = 'serviceUser';
-        // this.auth.user.type = userType;
-        // res.data.type = userType;
-        // this.auth.user$.next(res.data);
-      });
-
-    }
+    // this._authService.initAuthPlugin();
+    //
+    // if (localStorage.getItem('accessToken')) {
+    //   this._authService._tokenService.validateToken().subscribe((res: any) => {
+    //     this._authService.userSignedIn = true;
+    //     this._authService.user = JSON.parse(res._body).data;
+    //
+    //     // let userType: string;
+    //     // !res.data.latitude ? userType = 'user' : userType = 'serviceUser';
+    //     // this.auth.user.type = userType;
+    //     // res.data.type = userType;
+    //     // this.auth.user$.next(res.data);
+    //   });
+    //
+    // }
   }
 
 }

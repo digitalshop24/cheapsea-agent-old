@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CheapsServise} from '../cheaps.servise';
+import {CheapsServise} from './cheaps.servise';
 
 @Component({
   selector: 'app-cheaps',
@@ -14,8 +14,9 @@ export class CheapsComponent implements OnInit {
   cheaps = [];
 
   ngOnInit() {
-    this.cheapsServise.getCheaps().subscribe(cheaps => {
-      this.cheaps = cheaps;
-    });
+    this.cheapsServise.getCheaps().subscribe(
+      cheaps => { this.cheaps = cheaps; },
+      error  => console.log(error)
+    );
   }
 }
