@@ -15,6 +15,7 @@ export class CheapsComponent implements OnInit {
   cheaps = [];
 
   ngOnInit() {
+    document.body.classList.remove('login-bg');
     this.cheapsServise.getCheaps().subscribe(
       cheaps => { this.cheaps = cheaps; },
       error  => console.log(error)

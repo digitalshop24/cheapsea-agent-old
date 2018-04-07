@@ -22,6 +22,7 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
 import { CheapsComponent } from './cheaps/cheaps.component';
 import { CreateOfferComponent } from './create-offer/create-offer.component';
 import { GoogleAutocompleteComponent } from './google-autocomplete/google-autocomplete.component';
+import { AirlineAutocompleteComponent } from './airline-autocomplete/airline-autocomplete.component';
 
 const appRoutes: Routes = [
   // { path: '',             component: AppComponent },
@@ -45,7 +46,8 @@ const appRoutes: Routes = [
     LogoutComponent,
     GoogleAutocompleteComponent,
     ResetPasswordComponent,
-    UpdatePasswordComponent
+    UpdatePasswordComponent,
+    AirlineAutocompleteComponent
   ],
   imports: [
     BrowserModule,
@@ -74,3 +76,6 @@ export class AppModule { }
 
 // ng build --prod --aot=false --bh ./
 // firebase deploy
+
+// https://plnkr.co/edit/iFXRkJWVZ9tQ9i6mxmuf?p=preview
+// https://plnkr.co/edit/hQ6RtzCfPosfQl4HlbZQ?p=preview

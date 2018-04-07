@@ -1,5 +1,5 @@
-import { Component, OnInit, ElementRef, ViewChild, NgZone, Input, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
+import { Component, OnInit, ElementRef, ViewChild, NgZone, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MapsAPILoader } from '@agm/core';
 import {} from '@types/googlemaps';
 

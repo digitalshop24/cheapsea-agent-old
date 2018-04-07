@@ -1,0 +1,4 @@
+<input [hidden]="true" [value]="autocompleteResult" (change)="onChange($event)" type="text" class="form-control">
+<input id="typeahead-basic" (change)="selectItem($event)" (keypress)="getAirlines($event)" type="text"
+       class="form-control airline-autocomplete" [ngbTypeahead]="search"
+       placeholder="Введите название авиакомпании">

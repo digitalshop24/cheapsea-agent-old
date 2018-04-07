@@ -20,7 +20,7 @@
       </label>
     </div>
     <div class="form-check">
-      <input formControlName="offer_type" class="form-check-input" type="radio" id="rent-car-check-box" value="rent-car">
+      <input formControlName="offer_type" class="form-check-input" type="radio" id="rent-car-check-box" value="car_rent">
       <label class="form-check-label" for="rent-car-check-box">
         Аренда авто
       </label>
@@ -29,7 +29,7 @@
 
   <div class="form-group">
     <label for="offer-name">Название</label>
-    <input formControlName="offer_name" class="form-control" id="offer-name">
+    <input formControlName="name" class="form-control" id="offer-name">
     <small id="offer-name-hint" class="form-text text-muted">Используйте названия которые помогут
       пользователю быстро понять суть предложений.</small>
   </div>
@@ -63,11 +63,12 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Город пересадки</label>
-            <app-google-autocomplete formControlName="transfer_city"></app-google-autocomplete>
+            <app-google-autocomplete formControlName="google_place_id"></app-google-autocomplete>
           </div>
           <div class="form-group col-md-6">
            <label>Авиакомпания</label>
-           <input type="text" class="form-control" formControlName="airline">
+           <!--<input type="text" class="form-control" formControlName="airline">-->
+           <app-airline-autocomplete formControlName="airline_id"></app-airline-autocomplete>
           </div>
         </div>
       </div>
@@ -78,9 +79,45 @@
   </div>
 
   <div class="form-group">
-    <label for="offer-name">Цена</label>
-    <input formControlName="price" class="form-control" id="price">
+    <label for="price">Цена</label>
+    <input formControlName="price" class="form-control" id="price" type="number">
   </div>
+
+  <label>Даты предложения</label>
+  <div class="form-row">
+    <small id="offer-dates-hint" class="form-text text-muted col-md-12">Диапозон дат когда можно воспользоваться предложением.</small>
+    <div class="form-group col-md-6">
+      <input ngbDatepicker #date_from="ngbDatepicker" (click)="date_from.toggle()" formControlName="date_from" class="form-control">
+    </div>
+    <div class="form-group col-md-6">
+      <input ngbDatepicker #date_to="ngbDatepicker" (click)="date_to.toggle()" formControlName="date_to" class="form-control">
+    </div>
+  </div>
+
+  <label>Даты конца специального предложения</label>
+  <div class="form-row">
+    <small id="offer-due-date-hint" class="form-text text-muted col-md-12">Дата когда предложением нельзя будет воспользоваться</small>
+    <div class="form-group col-md-6">
+      <input ngbDatepicker #date_end="ngbDatepicker" (click)="date_end.toggle()" formControlName="date_end" class="form-control">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="discount_rate">Процент скидки</label>
+    <input formControlName="discount_rate" class="form-control" type="number" id="discount_rate"
+           (keyup)="checkMinMaxValues($event, 0, 100)" [min]="0" [max]="100">
+  </div>
+
+  <div class="form-group">
+    <label for="discount_rate">Описание</label>
+    <small id="discount_rate-hint" class="form-text text-muted">Опишите особенности предложения если они есть</small>
+    <textarea formControlName="description" class="form-control" id="description"></textarea>
+  </div>
+
+  <!--<div class="form-group">-->
+    <!--<label for="discount_rate">Фото</label>-->
+    <!--<input formControlName="photo" class="form-control" type="file" id="photo">-->
+  <!--</div>-->
 
   <button type="submit" class="btn btn-primary" [disabled]="!newOfferForm.valid">Submit</button>
 
