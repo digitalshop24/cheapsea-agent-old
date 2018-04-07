@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {environment} from '../environments/environment';
-import {Angular2TokenService, SignInData} from 'angular2-token';
+import {Angular2TokenService} from 'angular2-token';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +15,15 @@ export class AppComponent implements OnInit {
               private route: Router) { }
 
   ngOnInit() {
-    this.tokenService.init({apiBase: environment.server_url});
-    this.tokenService.validateToken().subscribe(
-      res => res,
-      error => { this.route.navigate(['/login']); }
-    );
+    this.tokenService.init({
+      apiBase: environment.server_url,
+      signInRedirect: 'login',
+      resetPasswordCallback: 'http://localhost:4200/update-password'
+    });
+    // this.tokenService.validateToken().subscribe(
+    //   res => res,
+    //   error => { this.route.navigate(['/login']); }
+    // );
 
     // this._authService.initAuthPlugin();
     //

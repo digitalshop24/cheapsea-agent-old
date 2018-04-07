@@ -16,6 +16,8 @@ import { AgmCoreModule } from '@agm/core';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 import { CheapsComponent } from './cheaps/cheaps.component';
 import { CreateOfferComponent } from './create-offer/create-offer.component';
@@ -23,11 +25,13 @@ import { GoogleAutocompleteComponent } from './google-autocomplete/google-autoco
 
 const appRoutes: Routes = [
   // { path: '',             component: AppComponent },
-  { path: 'create_offer', component: CreateOfferComponent },
-  { path: 'offers',       component: CheapsComponent },
-  { path: 'login',        component: LoginComponent },
-  { path: 'registration', component: RegistrationComponent },
-  { path: 'logout',       component: LogoutComponent },
+  { path: 'create_offer',    component: CreateOfferComponent },
+  { path: 'offers',          component: CheapsComponent,         canActivate: [Angular2TokenService]},
+  { path: 'login',           component: LoginComponent },
+  { path: 'registration',    component: RegistrationComponent },
+  { path: 'forgot-password', component: ResetPasswordComponent },
+  { path: 'update-password', component: UpdatePasswordComponent },
+  { path: 'logout',          component: LogoutComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 ];
 
@@ -39,7 +43,9 @@ const appRoutes: Routes = [
     CheapsComponent,
     CreateOfferComponent,
     LogoutComponent,
-    GoogleAutocompleteComponent
+    GoogleAutocompleteComponent,
+    ResetPasswordComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     BrowserModule,

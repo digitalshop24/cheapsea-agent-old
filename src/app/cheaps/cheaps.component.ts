@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CheapsServise} from './cheaps.servise';
+import {Angular2TokenService} from 'angular2-token';
 
 @Component({
   selector: 'app-cheaps',
