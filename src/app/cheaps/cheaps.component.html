@@ -1,14 +1,37 @@
-<div class="container">
-  <h1>Cheaps</h1>
-  <div class="row">
-    <div class="card cheap-card" style="width: 18rem;" *ngFor="let cheap of cheaps">
-      <div class="card-body">
-        <h5 class="card-title">Cheap #{{cheap.id}}</h5>
-        <p class="card-text">Name: {{cheap.name}}</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
+<div class="row">
+  <div class="card cheap-card" style="width: 21.8rem;" *ngFor="let cheap of cheaps">
+    <div class="card-body">
+      <p>
+        Автор:
+        <span>
+          {{cheap.user.email}}
+        </span>
+      </p>
+      <p>
+        Статус:
+        <span>
+          ---
+        </span>
+      </p>
+      <hr>
+      <h5>Тип предложения:<span> --- </span></h5>
+      <h5>Название:<span> {{cheap.name}} </span></h5>
+      <h5>Город отправления:<span> --- </span></h5>
+      <h5>Город прибытия:<span> --- </span></h5>
+      <h5>Авиакомпания:<span> --- </span></h5>
+      <h5>Прямой:<span> --- </span></h5>
+      <h5>Авиакомпания2:<span> --- </span></h5>
+      <h5>Город пересадки:<span> --- </span></h5>
+      <h5>Цена:<span> --- </span></h5>
+      <h5>Даты:<span> --- </span></h5>
+      <h5>Дата конца предложения:<span> --- </span></h5>
+      <h5>Процент скидки:<span> --- </span></h5>
+      <h5>Описание:<span> --- </span></h5>
+    </div>
+    <div class="card-body">
+      <a href="#" class="btn btn-success">Опубликовать</a>
+      <a [routerLink]="['/edit_offer', cheap.id]"
+      class="btn btn-purple">Редактировать</a>
     </div>
   </div>
 </div>
-
-

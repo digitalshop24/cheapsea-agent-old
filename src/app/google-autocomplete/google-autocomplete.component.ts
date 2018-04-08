@@ -32,6 +32,7 @@ export class GoogleAutocompleteComponent implements OnInit {
       () => {
         const autocompleteFrom = new google.maps.places.Autocomplete(
           this.elementRef.nativeElement.querySelector('.google-autocomplete'), { types: ['geocode'] });
+        autocompleteFrom.getPlace();
         autocompleteFrom.addListener('place_changed', () => {
           this.ngZone.run(() => {
             const place: google.maps.places.PlaceResult = autocompleteFrom.getPlace();
@@ -45,7 +46,17 @@ export class GoogleAutocompleteComponent implements OnInit {
   }
 
   public registerOnTouched() { }
-  public writeValue(obj: any) {}
+  public writeValue(obj: any) {
+    this.autocompleteResult = obj;
+    // if (obj) {
+    //   console.log(obj);
+    //   const placesServices = new google.maps.places.PlacesService($('#predicted-places').get(0));
+    //   placesServices.getDetails({
+    //     placeId: obj
+    //   }, (placeResult, status) => {
+    //   });
+    // }
+  }
   public registerOnChange(fn: any) {this.propagateChange = fn;}
   private propagateChange = (_: any) => { };
 

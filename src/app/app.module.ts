@@ -23,11 +23,13 @@ import { CheapsComponent } from './cheaps/cheaps.component';
 import { CreateOfferComponent } from './create-offer/create-offer.component';
 import { GoogleAutocompleteComponent } from './google-autocomplete/google-autocomplete.component';
 import { AirlineAutocompleteComponent } from './airline-autocomplete/airline-autocomplete.component';
+import { EditOfferComponent } from './edit-offer/edit-offer.component';
 
 const appRoutes: Routes = [
   // { path: '',             component: AppComponent },
-  { path: 'create_offer',    component: CreateOfferComponent },
-  { path: 'offers',          component: CheapsComponent,         canActivate: [Angular2TokenService]},
+  { path: 'edit_offer/:id',  component: EditOfferComponent,    canActivate: [Angular2TokenService]},
+  { path: 'create_offer',    component: CreateOfferComponent,  canActivate: [Angular2TokenService]},
+  { path: 'offers',          component: CheapsComponent,       canActivate: [Angular2TokenService]},
   { path: 'login',           component: LoginComponent },
   { path: 'registration',    component: RegistrationComponent },
   { path: 'forgot-password', component: ResetPasswordComponent },
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     GoogleAutocompleteComponent,
     ResetPasswordComponent,
     UpdatePasswordComponent,
-    AirlineAutocompleteComponent
+    AirlineAutocompleteComponent,
+    EditOfferComponent
   ],
   imports: [
     BrowserModule,
