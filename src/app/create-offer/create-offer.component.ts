@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import {Angular2TokenService} from 'angular2-token';
+import {Angular2TokenService, ResetPasswordData} from 'angular2-token';
 
 @Component({
   selector: 'app-create-offer',
@@ -81,13 +81,20 @@ export class CreateOfferComponent implements OnInit {
     }
   }
 
-
   createOffer(model) {
     console.log(model);
+    model.value.date_from        = new Date(model.value.date_from.year, model.value.date_from.month, model.value.date_from.day);
+    model.value.date_to          = new Date(model.value.date_to.year, model.value.date_to.month, model.value.date_to.day);
+    model.value.date_end         = new Date(model.value.date_end.year, model.value.date_end.month, model.value.date_end.day);
+    model.value.transfers_params = model.value.transfers;
     this._tokenService.post(
       'api/v1/offers',
       model.value).subscribe((res: any) => {
         console.log(res);
+    }, error => {
+        console.log('NOT SO GOOD...');
+        console.log(error);
+        console.log('NOT SO GOOD...');
     });
   }
 
