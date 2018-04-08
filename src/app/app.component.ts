@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
     this.tokenService.init({
       apiBase: environment.server_url,
       signInRedirect: 'login',
-      resetPasswordCallback: 'http://localhost:4200/update-password'
+      resetPasswordCallback: environment.front_server_url + '/update-password'
     });
     // this.tokenService.validateToken().subscribe(
     //   res => res,

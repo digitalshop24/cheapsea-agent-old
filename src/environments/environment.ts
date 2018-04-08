@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  server_url: '//localhost:3000'
+  server_url: '//localhost:3000',
+  front_server_url: 'http://localhost:4200'
 };
