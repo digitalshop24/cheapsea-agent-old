@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Angular2TokenService, ResetPasswordData} from 'angular2-token';
 import { Router } from '@angular/router';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-reset-password',
@@ -14,6 +15,7 @@ export class ResetPasswordComponent implements OnInit {
 
   resetPasswordData: ResetPasswordData = <ResetPasswordData>{};
   output:            any;
+  errors:            null;
 
   ngOnInit() { }
 
@@ -22,12 +24,14 @@ export class ResetPasswordComponent implements OnInit {
 
     this._tokenService.resetPassword(this.resetPasswordData).subscribe(
       res => {
+        console.log(res);
         this.resetPasswordData = <ResetPasswordData>{};
         this.output            = res;
         this.route.navigate(['/login']);
       }, error => {
         this.resetPasswordData = <ResetPasswordData>{};
         this.output            = error;
+        this.errors            = JSON.parse(error._body).errors;
       }
     );
   }
