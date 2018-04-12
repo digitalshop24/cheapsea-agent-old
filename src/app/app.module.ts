@@ -25,6 +25,8 @@ import { GoogleAutocompleteComponent } from './google-autocomplete/google-autoco
 import { AirlineAutocompleteComponent } from './airline-autocomplete/airline-autocomplete.component';
 import { EditOfferComponent } from './edit-offer/edit-offer.component';
 
+import { NavbarComponent } from './ui/navbar/navbar.component';
+
 const appRoutes: Routes = [
   // { path: '',             component: AppComponent },
   { path: 'edit_offer/:id',  component: EditOfferComponent,    canActivate: [Angular2TokenService]},
@@ -50,7 +52,8 @@ const appRoutes: Routes = [
     ResetPasswordComponent,
     UpdatePasswordComponent,
     AirlineAutocompleteComponent,
-    EditOfferComponent
+    EditOfferComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

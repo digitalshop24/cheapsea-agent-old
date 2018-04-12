@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 // import { AuthService } from '../auth/auth.service';
 import { Angular2TokenService, SignInData } from 'angular2-token';
@@ -7,7 +7,8 @@ import { Angular2TokenService, SignInData } from 'angular2-token';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  // encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 
@@ -36,6 +37,14 @@ export class LoginComponent implements OnInit {
       this.route.navigate(['/offers']);
     }
   }
+
+  // ngAfterViewInit(){
+  //   this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = 'yourColor';
+  // }
+
+  // ngOnDestroy(){
+  //   document.body.style.backgroundImage = "none";
+  // }
 
   logIn() {
 
