@@ -22,7 +22,7 @@ export class CreateOfferComponent implements OnInit {
     //   name:                  ['', [Validators.required]],
     //   from_google_place_id:  ['', [Validators.required]],
     //   to_google_place_id:    ['', [Validators.required]],
-    //   direct_trip:           ['1'],
+    //   is_direct:           ['1'],
     //   price:                 ['', [Validators.required]],
     //   transfers:             this._fb.array([]),
     //   date_from:             [''],
@@ -37,7 +37,7 @@ export class CreateOfferComponent implements OnInit {
       name:                  ['Дешевый билет в Крым', [Validators.required]],
       from_google_place_id:  ['ChIJkfrH7elR6kARkpRoogcKsfY', [Validators.required]],
       to_google_place_id:    ['ChIJtUL3_RopQg0RdZUd0e3YLoA', [Validators.required]],
-      direct_trip:           ['1'],
+      is_direct:             ['1'],
       price:                 ['4500', [Validators.required]],
       transfers:             this._fb.array([]),
       date_from:             [{year: 2018, month: 4, day: 28}],
@@ -57,7 +57,7 @@ export class CreateOfferComponent implements OnInit {
 
   addTransfer() {
     const control = <FormArray>this.newOfferForm.controls['transfers'];
-    if (!this.newOfferForm.value.direct_trip) {
+    if (!this.newOfferForm.value.is_direct) {
       control.push(this.initTransfer());
     } else {
       this.removeTransfer(control.length);
