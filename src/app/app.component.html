@@ -1,31 +1,36 @@
-<header *ngIf="tokenService.userSignedIn()">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" routerLink="/offers">CHEAPSEA</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<!--<header *ngIf="tokenService.userSignedIn()">-->
+  <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">-->
+    <!--<div class="container">-->
+      <!--<a class="navbar-brand" routerLink="/offers">CHEAPSEA</a>-->
+      <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--<span class="navbar-toggler-icon"></span>-->
+      <!--</button>-->
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a routerLink="/create_offer" routerLinkActive="active">Create cheap</a>
-          </li>
-        </ul>
-        <app-logout class="row"></app-logout>
-        <!--<a routerLink="/login" routerLinkActive="active">Login</a>-->
-        <!--<a routerLink="/registration" routerLinkActive="active">Registration</a>-->
-      </div>
-    </div>
-  </nav>
-</header>
-<body>
-  <div class="container">
-    <router-outlet></router-outlet>
-  </div>
-</body>
+      <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+        <!--<ul class="navbar-nav mr-auto">-->
+          <!--<li class="nav-item">-->
+            <!--<a routerLink="/create_offer" routerLinkActive="active">Create cheap</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+        <!--<app-logout class="row"></app-logout>-->
+        <!--&lt;!&ndash;<a routerLink="/login" routerLinkActive="active">Login</a>&ndash;&gt;-->
+        <!--&lt;!&ndash;<a routerLink="/registration" routerLinkActive="active">Registration</a>&ndash;&gt;-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</nav>-->
+<!--</header>-->
+<!--<body>-->
+  <!--<div class="container">-->
+    <!--<router-outlet></router-outlet>-->
+  <!--</div>-->
+<!--</body>-->
 
-<!--<router-outlet></router-outlet>-->
+<!--<app-navbar *ngIf="tokenService.userSignedIn()"></app-navbar>-->
+<!--<div class="content-wrapper" *ngIf="tokenService.userSignedIn()">-->
+  <!--<div class="container-fluid">-->
+    <!--<router-outlet></router-outlet>-->
+  <!--</div>-->
+<!--</div>-->
 
 <!--<body class="fixed-nav">-->
   <!--<app-navbar *ngIf="tokenService.userSignedIn()"></app-navbar>-->
@@ -35,3 +40,5 @@
     <!--</div>-->
   <!--</div>-->
 <!--</body>-->
+
+<router-outlet></router-outlet>

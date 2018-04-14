@@ -18,7 +18,7 @@ export class RegistrationComponent implements OnInit {
   output: any;
 
   ngOnInit() {
-    document.body.classList.add('login-bg');
+    // document.body.classList.add('login-bg');
     if (this._tokenService.userSignedIn()) {
       this.route.navigate(['/offers']);
     }

@@ -27,18 +27,78 @@ import { EditOfferComponent } from './edit-offer/edit-offer.component';
 
 import { NavbarComponent } from './ui/navbar/navbar.component';
 
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
+
 const appRoutes: Routes = [
-  // { path: '',             component: AppComponent },
-  { path: 'edit_offer/:id',  component: EditOfferComponent,    canActivate: [Angular2TokenService]},
-  { path: 'create_offer',    component: CreateOfferComponent,  canActivate: [Angular2TokenService]},
-  { path: 'offers',          component: CheapsComponent,       canActivate: [Angular2TokenService]},
-  { path: 'login',           component: LoginComponent },
-  { path: 'registration',    component: RegistrationComponent },
-  { path: 'forgot-password', component: ResetPasswordComponent },
-  { path: 'update-password', component: UpdatePasswordComponent },
-  { path: 'logout',          component: LogoutComponent },
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '',                    component: AuthLayoutComponent,
+    children: [
+      { path: 'login',           component: LoginComponent },
+      { path: 'registration',    component: RegistrationComponent },
+      { path: 'forgot-password', component: ResetPasswordComponent }
+    ]
+  },
+  { path: '',                    component: DashboardLayoutComponent,
+    children: [
+      { path: 'edit_offer/:id',  component: EditOfferComponent,    canActivate: [Angular2TokenService]},
+      { path: 'create_offer',    component: CreateOfferComponent,  canActivate: [Angular2TokenService]},
+      { path: 'offers',          component: CheapsComponent,       canActivate: [Angular2TokenService]},
+      { path: 'update-password', component: UpdatePasswordComponent },
+      { path: 'logout',          component: LogoutComponent },
+    ]
+  },
+  { path: '**', redirectTo: 'offers', pathMatch: 'full' },
+  { path: '', redirectTo: 'offers', pathMatch: 'full' }
 ];
+
+// ### Old
+// const appRoutes: Routes = [
+//   // { path: '',             component: AppComponent },
+//   { path: 'edit_offer/:id',  component: EditOfferComponent,    canActivate: [Angular2TokenService]},
+//   { path: 'create_offer',    component: CreateOfferComponent,  canActivate: [Angular2TokenService]},
+//   { path: 'offers',          component: CheapsComponent,       canActivate: [Angular2TokenService]},
+//
+//   { path: 'login',           component: LoginComponent },
+//   { path: 'registration',    component: RegistrationComponent },
+//
+//   { path: 'forgot-password', component: ResetPasswordComponent },
+//   { path: 'update-password', component: UpdatePasswordComponent },
+//   { path: 'logout',          component: LogoutComponent },
+//   { path: '', redirectTo: 'login', pathMatch: 'full' },
+// ];
+
+// ### Example
+// const appRoutes: Routes = [
+//
+//   //Site routes goes here
+//   {
+//     path: '',
+//     component: SiteLayoutComponent,
+//     children: [
+//       { path: '', component: HomeComponent, pathMatch: 'full'},
+//       { path: 'about', component: AboutComponent }
+//     ]
+//   },
+//
+//   // App routes goes here here
+//   {
+//     path: '',
+//     component: AppLayoutComponent,
+//     children: [
+//       { path: 'dashboard', component: DashboardComponent },
+//       { path: 'profile', component: ProfileComponent }
+//     ]
+//   },
+//
+//   //no layout routes
+//   { path: 'login', component: LoginComponent},
+//   { path: 'register', component: RegisterComponent },
+//   // otherwise redirect to home
+//   { path: '**', redirectTo: '' }
+// ];
+//
+// export const routing = RouterModule.forRoot(appRoutes);
+
 
 @NgModule({
   declarations: [
@@ -53,7 +113,9 @@ const appRoutes: Routes = [
     UpdatePasswordComponent,
     AirlineAutocompleteComponent,
     EditOfferComponent,
-    NavbarComponent
+    NavbarComponent,
+    AuthLayoutComponent,
+    DashboardLayoutComponent
   ],
   imports: [
     BrowserModule,
