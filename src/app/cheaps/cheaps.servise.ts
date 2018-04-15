@@ -7,8 +7,8 @@ export class CheapsServise {
 
   constructor(private _tokenService: Angular2TokenService) {}
 
-  getCheaps() {
-    return this._tokenService.get('api/v1/offers')
+  getCheaps(page) {
+    return this._tokenService.get('api/v1/offers', {params: {page: page}})
       .map(response => response.json());
   }
 

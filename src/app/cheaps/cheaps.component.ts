@@ -10,13 +10,15 @@ import {Angular2TokenService} from 'angular2-token';
 })
 export class CheapsComponent implements OnInit {
 
+  p: number = 1;
+
   constructor(private cheapsServise: CheapsServise) { }
 
   cheaps = [];
 
   ngOnInit() {
     document.body.classList.remove('login-bg');
-    this.cheapsServise.getCheaps().subscribe(
+    this.cheapsServise.getCheaps(this.p).subscribe(
       cheaps => {
         console.log(cheaps);
         this.cheaps = cheaps; },
@@ -24,3 +26,6 @@ export class CheapsComponent implements OnInit {
     );
   }
 }
+
+
+// https://github.com/michaelbromley/ngx-pagination#server-side-paging

@@ -1,5 +1,6 @@
 <div class="row">
-  <div class="card cheap-card" style="width: 21.8rem;" *ngFor="let cheap of cheaps">
+  <div class="card cheap-card" style="width: 21.8rem;" *ngFor="let cheap of cheaps | paginate: { itemsPerPage: 3, currentPage: p }">
+  <!--<div class="card cheap-card" style="width: 21.8rem;" *ngFor="let cheap of cheaps">-->
     <div class="card-body">
       <p>
         Автор:
@@ -34,4 +35,8 @@
       class="btn btn-purple">Редактировать</a>
     </div>
   </div>
+</div>
+<div class="row">
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  <!--<ngb-pagination [collectionSize]="30" [(page)]=p [maxSize]="5" [boundaryLinks]="true"></ngb-pagination>-->
 </div>

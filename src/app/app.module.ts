@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import {HttpClientModule} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
@@ -125,6 +126,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     NgbModule.forRoot(),
     HttpModule,
+    NgxPaginationModule,
     RouterModule.forRoot(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBEX35MB2wDC4dXdecw6SdFfu-_z-gD5rI',
@@ -134,7 +136,7 @@ const appRoutes: Routes = [
   providers: [
     Angular2TokenService,
     HttpClientModule,
-    AuthService
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })

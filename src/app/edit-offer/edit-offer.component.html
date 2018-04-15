@@ -55,11 +55,11 @@
       </div>
     </div>
 
-    <div formArrayName="transfers">
-      <div *ngFor="let transfer of editOfferForm.controls.transfers.controls; let i=index" class="card form-group">
+    <div formArrayName="transfers_params">
+      <div *ngFor="let transfer of editOfferForm.controls.transfers_params.controls; let i=index" class="card form-group">
         <div class="card-header">
           <span>Пересадка {{i + 1}}</span>
-          <span class="float-right" style="cursor: pointer" *ngIf="editOfferForm.controls.transfers.controls.length > 1" (click)="removeTransfer(i)">Удалить</span>
+          <span class="float-right" style="cursor: pointer" *ngIf="editOfferForm.controls.transfers_params.controls.length > 1" (click)="removeTransfer(i)">Удалить</span>
         </div>
         <div class="card-body" [formGroupName]="i">
           <div class="form-row">
@@ -125,3 +125,6 @@
 
   </form>
 </div>
+<pre>
+  {{model}}
+</pre>

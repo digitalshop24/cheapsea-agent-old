@@ -1,4 +1,16 @@
 <input [hidden]="true" [value]="autocompleteResult" (change)="onChange($event)" type="text" class="form-control">
-<input id="typeahead-basic" (change)="selectItem($event)" (keypress)="getAirlines($event)" type="text"
-       class="form-control airline-autocomplete" [ngbTypeahead]="search"
-       placeholder="Введите название авиакомпании">
+<div class="form-group">
+  <input id="typeahead-http"
+         type="text" class="form-control"
+         placeholder="Введите название авиакомпании"
+         (selectItem)="selectItem()"
+         [resultFormatter]="formatMatches"
+         [inputFormatter]="formatMatches"
+         [class.is-invalid]="searchFailed"
+         [ngbTypeahead]="search"
+         [(ngModel)]="selected_item"
+         [disabled]="searchFailed"
+  >
+  <span *ngIf="searching">Поиск авиакомпании...</span>
+  <div class="invalid-feedback" *ngIf="searchFailed">Ничего не найденно.</div>
+</div>
