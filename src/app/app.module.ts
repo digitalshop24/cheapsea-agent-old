@@ -32,6 +32,7 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 
 const appRoutes: Routes = [
+  { path: '', redirectTo: 'offers', pathMatch: 'full' },
   { path: '',                    component: AuthLayoutComponent,
     children: [
       { path: 'login',           component: LoginComponent },
@@ -48,8 +49,7 @@ const appRoutes: Routes = [
       { path: 'logout',          component: LogoutComponent },
     ]
   },
-  { path: '**', redirectTo: 'offers', pathMatch: 'full' },
-  { path: '', redirectTo: 'offers', pathMatch: 'full' }
+  { path: '**', redirectTo: 'login', pathMatch: 'full' }
 ];
 
 // ### Old

@@ -15,12 +15,17 @@
   <!--/brand name-->
 
   <!--responsive nav toggle-->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">-->
+    <!--<span class="navbar-toggler-icon"></span>-->
+  <!--</button>-->
+
+  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarResponsive">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <!--/responsive nav toggle-->
 
-  <div class="collapse navbar-collapse" id="navbarResponsive">
+  <div class="collapse navbar-collapse" id="navbarResponsive" [ngbCollapse]="!isCollapsed">
 
     <!--left side nav-->
     <ul class="navbar-nav left-side-nav" id="accordion">
@@ -222,29 +227,30 @@
     <!--header leftside links-->
     <ul class="navbar-nav header-links">
 
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/offers" routerLinkActive="active">CHEAPSEA</a>
+      <li ngbDropdown class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle mr-lg-2" id="cheaps">
+          Cheaps
+        </a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="cheaps">
+          <a class="dropdown-item" routerLink="/offers" routerLinkActive="active">All cheaps</a>
+          <a class="dropdown-item" routerLink="/create_offer" routerLinkActive="active">Create cheaps</a>
+        </div>
       </li>
-      <li>
-        <a class="nav-link" routerLink="/create_offer" routerLinkActive="active">Create cheap</a>
-      </li>
-      <li>
-        <app-logout></app-logout>
-      </li>
+
       <!--<li class="nav-item dropdown">-->
-      <!--<a class="nav-link dropdown-toggle mr-lg-2" id="reportNav" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-      <!--Reports-->
-      <!--</a>-->
-      <!--<div class="dropdown-menu" aria-labelledby="reportNav">-->
-      <!--<a class="dropdown-item" href="#">Daily Reports</a>-->
-      <!--<a class="dropdown-item" href="#">Weekly Reports</a>-->
-      <!--<a class="dropdown-item" href="#">Monthly Reports</a>-->
-      <!--<a class="dropdown-item" href="#">Yearly Reports</a>-->
-      <!--<a class="dropdown-item" href="#">HR Reports</a>-->
-      <!--<a class="dropdown-item" href="#">Product Reports</a>-->
-      <!--<a class="dropdown-item" href="#">Order Reports</a>-->
-      <!--<a class="dropdown-item" href="#">Revenue Reports</a>-->
-      <!--</div>-->
+        <!--<a class="nav-link dropdown-toggle mr-lg-2" id="reportNav" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+          <!--Reports-->
+        <!--</a>-->
+        <!--<div class="dropdown-menu" aria-labelledby="reportNav">-->
+          <!--<a class="dropdown-item" href="#">Daily Reports</a>-->
+          <!--<a class="dropdown-item" href="#">Weekly Reports</a>-->
+          <!--<a class="dropdown-item" href="#">Monthly Reports</a>-->
+          <!--<a class="dropdown-item" href="#">Yearly Reports</a>-->
+          <!--<a class="dropdown-item" href="#">HR Reports</a>-->
+          <!--<a class="dropdown-item" href="#">Product Reports</a>-->
+          <!--<a class="dropdown-item" href="#">Order Reports</a>-->
+          <!--<a class="dropdown-item" href="#">Revenue Reports</a>-->
+        <!--</div>-->
       <!--</li>-->
     </ul>
     <!--/header leftside links-->
@@ -373,19 +379,20 @@
           <a class="dropdown-item small" href="#">View all notification</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle mr-lg-3" id="userNav" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+      <li ngbDropdown class="nav-item dropdown" placement="bottom-right">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle mr-lg-3" id="userNav">
           <div class="user-thumb">
             <img class="rounded-circle" src="assets/img/avatar/avatar1.jpg" alt=""/>
           </div>
         </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userNav">
+        <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right" aria-labelledby="userNav">
           <a class="dropdown-item" href="#">My Profile</a>
           <a class="dropdown-item" href="#">Account Settings</a>
           <a class="dropdown-item" href="#">Inbox <span class="badge badge-primary">3</span></a>
           <a class="dropdown-item" href="#">Message <span class="badge badge-success">5</span></a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="login.html">Sign Out</a>
+          <app-logout></app-logout>
         </div>
       </li>
       <li class="nav-item">

@@ -1,7 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import "../node_modules/font-awesome/css/font-awesome.css";
 
 @import 'assets/css/main.css';
+@import 'assets/css/dashlab-icon.css';
 
 /*.login-bg { display: flex; }*/
 /*body:has(> .login-bg) {     background: #2f3c4b; }*/
